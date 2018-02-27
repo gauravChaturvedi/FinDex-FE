@@ -1,0 +1,23 @@
+.all-categories-container {
+  padding: 10%;
+}
+
+.category-container {
+  display: flex;
+}
+
+.category-checkbox {
+  flex: 3;
+}
+
+.category-weight {
+  flex: 1;
+}
+
+.subcategory-container {
+  display: flex;
+}
+
+#tableContainer {
+  overflow: scroll;
+}
