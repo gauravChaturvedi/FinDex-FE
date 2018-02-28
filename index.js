@@ -40,11 +40,11 @@ function categoryWeightUpdated(id, elem) {
   // var sum = 0;
   // for (var key in comparisonObject) {
   //   if (comparisonObject.hasOwnProperty(key)) {
-  //     sum += parseInt(comparisonObject[key]);
+  //     sum += parseFloat(comparisonObject[key]);
   //   }
   // }
 
-  categoryWeights[id] = (parseInt(newValue) || 0)/100;
+  categoryWeights[id] = (parseFloat(newValue) || 0)/100;
 
   // if (sum == 100) {
   //   // categoryWeights[id] = newValue;
@@ -58,7 +58,7 @@ function subCategoryWeightUpdated(id, elem) {
   const newValue = elem.value;
   // const comparisonObject = Object.assign({}, sCW);
   // comparisonObject[id] = newValue;
-  sCW[id] = (parseInt(newValue) || 0)/100;
+  sCW[id] = (parseFloat(newValue) || 0)/100;
 }
 
 function getData() {
@@ -107,12 +107,13 @@ function calculateRankings() {
 
   // const cObject = Object.assign({}, mainData);
 
+
   for (var key in mainData) {
     const nObj = mainData[key];
-    mainData[key].Score = categoryWeights.environment*(parseInt(nObj['# of Unicorn'])*sCW.nOfUnicorns + parseInt(nObj['Innvation Ranking'])*sCW.innovRanking);
-    mainData[key].Score += categoryWeights.social*(parseInt(nObj["Tech Jobs Growth Rate % (06'-16')"]) *1);
-    mainData[key].Score += categoryWeights.political*(parseInt(nObj['Effective State Corporate Tax Rate 2017']) *1);
-    mainData[key].Score += categoryWeights.economic*(parseInt(nObj['Fintech Job Count']) *1);
+    mainData[key].Score = categoryWeights.environment*(parseFloat(nObj['# of Unicorn'])*sCW.nOfUnicorns + parseFloat(nObj['Innvation Ranking'])*sCW.innovRanking);
+    mainData[key].Score += categoryWeights.social*(parseFloat(nObj["Tech Jobs Growth Rate % (06'-16')"]) *1);
+    mainData[key].Score += categoryWeights.political*(parseFloat(nObj['Effective State Corporate Tax Rate 2017']) *1);
+    mainData[key].Score += categoryWeights.economic*(parseFloat(nObj['Fintech Job Count']) *1);
   }
 
   mainData.sort(function(a, b){
