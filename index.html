@@ -18,69 +18,59 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
 </head>
 <body>
   <nav class="navbar navbar-default" id="headerBar">
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="#">
-          <img alt="Brand" src="citi.svg.png" style="height: 100%;">
+          <img alt="Brand" src="citi_ventures_logo.png" style="height: 100%;">
         </a>
       </div>
     </div>
   </nav>
   <div style="display: flex;">
-    <div class="navbar navbar-default" style="flex: 1;">
+    <div class="navbar navbar-default" style="flex: 0.75;">
+
+      <!-- ENVIRONMENT -->
       <div class="all-categories-container">
         <div class="category-container">
           <div class="category-checkbox">
-            <input type="checkbox" id="firstCategoryCheckBox" aria-label="..."> <label>First Category</label>
+            <input type="checkbox" id="firstCategoryCheckBox" aria-label="..."> <label>Environment</label>
           </div>
           <div class="category-weight">
-            <input type="text" id="firstCategoryWeight" pattern="[0-100]" onchange="categoryWeightUpdated('firstCategoryWeight', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2">
+            <input type="text" id="environment" pattern="[0-100]" onchange="categoryWeightUpdated('environment', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2">
           </div>
         </div>
-        <div id="first-category-container">
+        <div id="first-category-container" class="sub-categories-container">
           <div class="subcategory-container">
             <div class="category-checkbox">
-              <label>First Item</label>
+              <label># Of Unicorns</label>
             </div>
             <div class="category-weight">
-              <input type="text" id="1CategoryItem1" class="form-control" placeholder="0" aria-describedby="sizing-addon2">
+              <input type="text" id="nOfUnicorns" pattern="[0-100]" onchange="subCategoryWeightUpdated('nOfUnicorns', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2">
             </div>
           </div>
           <div class="subcategory-container">
             <div class="category-checkbox">
-              <label>Second Item</label>
+              <label>Innovation Ranking</label>
             </div>
             <div class="category-weight">
-              <input type="text" id="1CategoryItem2" class="form-control" placeholder="0" aria-describedby="sizing-addon2">
-            </div>
-          </div>
-          <div class="subcategory-container">
-            <div class="category-checkbox">
-              <label>Third Item</label>
-            </div>
-            <div class="category-weight">
-              <input type="text" id="1CategoryItem3" class="form-control" placeholder="0" aria-describedby="sizing-addon2">
+              <input type="text" id="innovRanking" pattern="[0-100]" onchange="subCategoryWeightUpdated('innovRanking', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2">
             </div>
           </div>
         </div>
       </div>
+      <!-- ENVIRONMENT END-->
 
+      <!-- SOCIAL -->
       <div class="all-categories-container">
         <div class="category-container">
           <div class="category-checkbox">
-            <input type="checkbox" id="secondCategoryCheckBox" aria-label="..."> <label>Second Category</label>
+            <input type="checkbox" id="secondCategoryCheckBox" aria-label="..."> <label>Social</label>
           </div>
           <div class="category-weight">
-            <input type="text" id="secondCategoryWeight" pattern="[0-100]" onchange="categoryWeightUpdated('secondCategoryWeight', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2">
+            <input type="text" id="social" pattern="[0-100]" onchange="categoryWeightUpdated('social', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2">
           </div>
         </div>
         <div id="second-category-container">
@@ -100,18 +90,44 @@
               <input type="text" id="2CategoryItem2" class="form-control" placeholder="0" aria-describedby="sizing-addon2">
             </div>
           </div>
-          <div class="subcategory-container">
-            <div class="category-checkbox">
-              <label>Third Item</label>
-            </div>
-            <div class="category-weight">
-              <input type="text" id="2CategoryItem3" class="form-control" placeholder="0" aria-describedby="sizing-addon2">
-            </div>
+        </div>
+      </div>
+      <!-- SOCIAL END -->
+
+      <!-- POLITICAL -->
+      <div class="all-categories-container">
+        <div class="category-container">
+          <div class="category-checkbox">
+            <input type="checkbox" id="thirdCategoryCheckBox" aria-label="..."> <label>Political</label>
+          </div>
+          <div class="category-weight">
+            <input type="text" id="political" pattern="[0-100]" onchange="categoryWeightUpdated('political', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2">
           </div>
         </div>
       </div>
+      <!-- POLITICAL END-->
+
+      <!-- ECONOMIC -->
+      <div class="all-categories-container">
+        <div class="category-container">
+          <div class="category-checkbox">
+            <input type="checkbox" id="fourthCategoryCheckBox" aria-label="..."> <label>Economic</label>
+          </div>
+          <div class="category-weight">
+            <input type="text" id="economic" pattern="[0-100]" onchange="categoryWeightUpdated('economic', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2">
+          </div>
+        </div>
+      </div>
+      <!-- ECONOMIC END-->
+
+      <!-- CALCULATE BUTTON-->
+      <div class="calculate-button-container">
+        <button type="button" class="btn btn-primary" onclick="calculateRankings()">Calculate</button>
+      </div>
+      <!-- CALCULATE BUTTON END-->
 
     </div>
+
     <div class="container" id="tableContainer" style="flex: 3;">
       <table id="rankingsTable" class="table table-striped">
         <thead>

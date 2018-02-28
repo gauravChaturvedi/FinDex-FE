@@ -4,6 +4,13 @@
 
 .category-container {
   display: flex;
+  align-items: center;
+}
+
+.sub-categories-container {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
 }
 
 .category-checkbox {
@@ -15,6 +22,12 @@
 }
 
 .subcategory-container {
+  display: flex;
+  align-items: center;
+}
+
+.calculate-button-container {
+  justify-content: center;
   display: flex;
 }
 
