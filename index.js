@@ -31,7 +31,7 @@ var mainData = {};
 
 const windowHeight = $( window ).height();
 const headerHeight = $('#headerBar').height()
-$('#tableContainer').height( windowHeight - headerHeight );
+$('#tableContainer').height( windowHeight - headerHeight - 25);
 
 function categoryWeightUpdated(id, elem) {
   const newValue = elem.value;
@@ -133,4 +133,8 @@ function generateTable() {
   for (var key in mainData) {
     $("#rankingsTable > tbody").append("<tr><th>" + mainData[key].Ranking + "</th><td>" + mainData[key].Metropolitan + "</td><td>" + mainData[key].Score + "</td>");
   }
+}
+
+function filterSlideToggle() {
+  $('#weightsBar').toggle('slide', { direction: 'left' }, 500);
 }
