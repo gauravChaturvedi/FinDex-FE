@@ -1,8 +1,8 @@
 var categoryWeights = {
-  'environment': 0.4,
-  'social': 0.3,
-  'political': 0.1,
-  'economic': 0.2
+  'environment': 40,
+  'social': 30,
+  'political': 10,
+  'economic': 20
 };
 
 // Env 40
@@ -11,8 +11,8 @@ var categoryWeights = {
 // Eco 20
 
 var sCW = {
-  'innovRanking': 1,
-  'nOfUnicorns': 1
+  'innovRanking': 40,
+  'nOfUnicorns': 60
 };
 
 
@@ -44,7 +44,7 @@ function categoryWeightUpdated(id, elem) {
   //   }
   // }
 
-  categoryWeights[id] = (parseFloat(newValue) || 0)/100;
+  categoryWeights[id] = (parseFloat(newValue) || 0);
 
   // if (sum == 100) {
   //   // categoryWeights[id] = newValue;
@@ -58,7 +58,7 @@ function subCategoryWeightUpdated(id, elem) {
   const newValue = elem.value;
   // const comparisonObject = Object.assign({}, sCW);
   // comparisonObject[id] = newValue;
-  sCW[id] = (parseFloat(newValue) || 0)/100;
+  sCW[id] = (parseFloat(newValue) || 0);
 }
 
 function getData() {
@@ -110,10 +110,11 @@ function calculateRankings() {
 
   for (var key in mainData) {
     const nObj = mainData[key];
-    mainData[key].Score = categoryWeights.environment*(parseFloat(nObj['# of Unicorn'])*sCW.nOfUnicorns + parseFloat(nObj['Innvation Ranking'])*sCW.innovRanking);
+    mainData[key].Score = categoryWeights.environment*(parseFloat(nObj['# of Unicorn'])*sCW.nOfUnicorns/100 + parseFloat(nObj['Innvation Ranking'])*sCW.innovRanking/100);
     mainData[key].Score += categoryWeights.social*(parseFloat(nObj["Tech Jobs Growth Rate % (06'-16')"]) *1);
     mainData[key].Score += categoryWeights.political*(parseFloat(nObj['Effective State Corporate Tax Rate 2017']) *1);
     mainData[key].Score += categoryWeights.economic*(parseFloat(nObj['Fintech Job Count']) *1);
+    mainData[key].Score = mainData[key].Score/100;
   }
 
   mainData.sort(function(a, b){
