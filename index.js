@@ -65,7 +65,7 @@ function getData() {
   $.get("https://findexdata.herokuapp.com/getData", function(data, status){
     mainData = JSON.parse(data);
     for (var key in mainData) {
-      $("#rankingsTable > tbody").append("<tr><th>" + mainData[key].Ranking + "</th><td>" + mainData[key].Metropolitan + "</td><td>" + mainData[key].Score + "</td>");
+      $("#rankingsTable > tbody").append("<tr><th>" + mainData[key].Ranking + "</th><td>" + mainData[key].Metropolitan + "</td><td>" + (mainData[key].Score).toFixed(2) + "</td>");
     }
   });
 }
@@ -114,7 +114,7 @@ function calculateRankings() {
     mainData[key].Score += categoryWeights.social*(parseFloat(nObj["Tech Jobs Growth Rate % (06'-16')"]) *1);
     mainData[key].Score += categoryWeights.political*(parseFloat(nObj['Effective State Corporate Tax Rate 2017']) *1);
     mainData[key].Score += categoryWeights.economic*(parseFloat(nObj['Fintech Job Count']) *1);
-    mainData[key].Score = mainData[key].Score/100;
+    mainData[key].Score = (mainData[key].Score/100).toFixed(2);
   }
 
   mainData.sort(function(a, b){
@@ -133,7 +133,7 @@ function generateTable() {
   $("#rankingsTable > tbody").empty();
 
   for (var key in mainData) {
-    $("#rankingsTable > tbody").append("<tr><th>" + mainData[key].Ranking + "</th><td>" + mainData[key].Metropolitan + "</td><td>" + mainData[key].Score + "</td>");
+    $("#rankingsTable > tbody").append("<tr><th>" + (parseInt(key) +1) + "</th><td>" + mainData[key].Metropolitan + "</td><td>" + mainData[key].Score + "</td>");
   }
 }
 
