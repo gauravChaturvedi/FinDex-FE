@@ -62,7 +62,8 @@ function subCategoryWeightUpdated(id, elem) {
 }
 
 function getData() {
-  $.get("https://findexdata.herokuapp.com/getData", function(data, status){
+  // $.get("https://findexdata.herokuapp.com/getData", function(data, status){
+  $.get("https://nodeupload-196719.appspot.com/getData", function(data, status){
     mainData = JSON.parse(data);
     for (var key in mainData) {
       $("#rankingsTable > tbody").append("<tr><th>" + mainData[key].Ranking + "</th><td>" + mainData[key].Metropolitan + "</td><td>" + (mainData[key].Score).toFixed(2) + "</td>");
