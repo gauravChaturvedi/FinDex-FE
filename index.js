@@ -124,7 +124,7 @@ function calculateRankings() {
   // ['# of Unicorn'] Env 60
   // ['Innvation Ranking'] Env 40
   // ['Effective State Corporate Tax Rate 2017'] Pol
-  // ['Fintech Job Count'] political
+  // ['Fintech Job Count'] Economic
   // ['Tech Jobs Growth Rate % (06'+'-16)'] Social
 
 }
