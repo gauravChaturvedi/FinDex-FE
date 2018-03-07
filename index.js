@@ -108,6 +108,29 @@ secondCategoryCheckBox.on('click', function() {
   }
 });
 
+var thirdCategoryCheckBox = $('#thirdCategoryCheckBox');
+var thirdCategoryContainer = $('#third-category-container');
+thirdCategoryContainer.hide();
+
+thirdCategoryCheckBox.on('click', function() {
+  if($(this).is(':checked')) {
+    thirdCategoryContainer.show();
+  } else {
+    thirdCategoryContainer.hide();
+  }
+});
+
+var fourthCategoryCheckBox = $('#fourthCategoryCheckBox');
+var fourthCategoryContainer = $('#fourth-category-container');
+fourthCategoryContainer.hide();
+
+fourthCategoryCheckBox.on('click', function() {
+  if($(this).is(':checked')) {
+    fourthCategoryContainer.show();
+  } else {
+    fourthCategoryContainer.hide();
+  }
+});
 
 function calculateRankings() {
   // console.log('Calculating Rankings with these weights', categoryWeights, sCW);
@@ -134,12 +157,6 @@ function calculateRankings() {
     return b.Score-a.Score;
   });
   generateTable();
-  // ['# of Unicorn'] Env 60
-  // ['Innvation Ranking'] Env 40
-  // ['Effective State Corporate Tax Rate 2017'] Pol
-  // ['Fintech Job Count'] Economic
-  // ['Tech Jobs Growth Rate % (06'+'-16)'] Social
-
 }
 
 function generateTable() {
