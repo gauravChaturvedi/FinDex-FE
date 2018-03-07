@@ -45,6 +45,14 @@
         <div id="first-category-container" class="sub-categories-container">
           <div class="subcategory-container">
             <div class="category-checkbox">
+              <label>VC Deal $ Amt</label>
+            </div>
+            <div class="category-weight">
+              <input type="text" id="vcDealAmt" pattern="[0-100]" onchange="subCategoryWeightUpdated('vcDealAmt', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2"><span class="percentage-label">%</span>
+            </div>
+          </div>
+          <div class="subcategory-container">
+            <div class="category-checkbox">
               <label># Of Unicorns</label>
             </div>
             <div class="category-weight">
@@ -57,6 +65,30 @@
             </div>
             <div class="category-weight">
               <input type="text" id="innovRanking" pattern="[0-100]" onchange="subCategoryWeightUpdated('innovRanking', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2"><span class="percentage-label">%</span>
+            </div>
+          </div>
+          <div class="subcategory-container">
+            <div class="category-checkbox">
+              <label># of FinTech Startups</label>
+            </div>
+            <div class="category-weight">
+              <input type="text" id="noOfFinTechStartups" pattern="[0-100]" onchange="subCategoryWeightUpdated('noOfFinTechStartups', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2"><span class="percentage-label">%</span>
+            </div>
+          </div>
+          <div class="subcategory-container">
+            <div class="category-checkbox">
+              <label>Internet Access</label>
+            </div>
+            <div class="category-weight">
+              <input type="text" id="intAccess" pattern="[0-100]" onchange="subCategoryWeightUpdated('intAccess', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2"><span class="percentage-label">%</span>
+            </div>
+          </div>
+          <div class="subcategory-container">
+            <div class="category-checkbox">
+              <label>Wifi (% of time spent connected to wifi networks)</label>
+            </div>
+            <div class="category-weight">
+              <input type="text" id="wifiPercent" pattern="[0-100]" onchange="subCategoryWeightUpdated('wifiPercent', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2"><span class="percentage-label">%</span>
             </div>
           </div>
         </div>
@@ -76,18 +108,18 @@
         <div id="second-category-container">
           <div class="subcategory-container">
             <div class="category-checkbox">
-              <label>First Item</label>
+              <label>Tech Jobs Growth Rate % (06'-16')</label>
             </div>
             <div class="category-weight">
-              <input type="text" id="2CategoryItem1" class="form-control" placeholder="0" aria-describedby="sizing-addon2"><span class="percentage-label">%</span>
+              <input type="text" id="techJobGrowth" pattern="[0-100]" onchange="subCategoryWeightUpdated('techJobGrowth', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2"><span class="percentage-label">%</span>
             </div>
           </div>
           <div class="subcategory-container">
             <div class="category-checkbox">
-              <label>Second Item</label>
+              <label>Most Liveable Cities</label>
             </div>
             <div class="category-weight">
-              <input type="text" id="2CategoryItem2" class="form-control" placeholder="0" aria-describedby="sizing-addon2"><span class="percentage-label">%</span>
+              <input type="text" id="livableCities" pattern="[0-100]" onchange="subCategoryWeightUpdated('livableCities', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2"><span class="percentage-label">%</span>
             </div>
           </div>
         </div>
@@ -104,6 +136,24 @@
             <input type="text" id="political" pattern="[0-100]" onchange="categoryWeightUpdated('political', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2"><span class="percentage-label">%</span>
           </div>
         </div>
+        <div id="second-category-container">
+          <div class="subcategory-container">
+            <div class="category-checkbox">
+              <label>Effective State Corporate Tax Rate 2017</label>
+            </div>
+            <div class="category-weight">
+              <input type="text" id="taxRate" pattern="[0-100]" onchange="subCategoryWeightUpdated('taxRate', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2"><span class="percentage-label">%</span>
+            </div>
+          </div>
+          <div class="subcategory-container">
+            <div class="category-checkbox">
+              <label>Tax Incentives</label>
+            </div>
+            <div class="category-weight">
+              <input type="text" id="taxIncentives" pattern="[0-100]" onchange="subCategoryWeightUpdated('taxIncentives', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2"><span class="percentage-label">%</span>
+            </div>
+          </div>
+        </div>
       </div>
       <!-- POLITICAL END-->
 
@@ -115,6 +165,24 @@
           </div>
           <div class="category-weight">
             <input type="text" id="economic" pattern="[0-100]" onchange="categoryWeightUpdated('economic', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2"><span class="percentage-label">%</span>
+          </div>
+        </div>
+        <div id="second-category-container">
+          <div class="subcategory-container">
+            <div class="category-checkbox">
+              <label>Fintech Job Count</label>
+            </div>
+            <div class="category-weight">
+              <input type="text" id="finTechJobCount" pattern="[0-100]" onchange="subCategoryWeightUpdated('finTechJobCount', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2"><span class="percentage-label">%</span>
+            </div>
+          </div>
+          <div class="subcategory-container">
+            <div class="category-checkbox">
+              <label>GFCI</label>
+            </div>
+            <div class="category-weight">
+              <input type="text" id="gfci" pattern="[0-100]" onchange="subCategoryWeightUpdated('gfci', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2"><span class="percentage-label">%</span>
+            </div>
           </div>
         </div>
       </div>
