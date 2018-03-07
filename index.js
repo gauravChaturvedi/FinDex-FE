@@ -121,21 +121,10 @@ function calculateRankings() {
 
   for (var key in mainData) {
     const nObj = mainData[key];
-    // console.log(parseFloat(nObj['# of Unicorn'])*sCW.nOfUnicorns/100, 'first');
-    // console.log(parseFloat(nObj['Innovation Ranking'])*sCW.innovRanking/100 , 'second');
-    // console.log(parseFloat(nObj['# of Unicorn'])*sCW.nOfUnicorns/100 + parseFloat(nObj['Innovation Ranking'])*sCW.innovRanking/100, 'third');
-    // console.log(categoryWeights.environment*(parseFloat(nObj['# of Unicorn'])*sCW.nOfUnicorns/100 + parseFloat(nObj['Innovation Ranking'])*sCW.innovRanking/100));
-    // dummy = categoryWeights.environment*(parseFloat(nObj['# of Unicorn'])*sCW.nOfUnicorns/100 + parseFloat(nObj['Innovation Ranking'])*sCW.innovRanking/100);
-    // console.log(dummy, 'fourth');
-    // mainData[key].Score = dummy;
     mainData[key].Score = categoryWeights.environment*(parseFloat(nObj['# of Unicorn'])*sCW.nOfUnicorns/100 + parseFloat(nObj['Innovation Ranking'])*sCW.innovRanking/100);
-    // console.log(categoryWeights.environment*(parseFloat(nObj['# of Unicorn'])*sCW.nOfUnicorns/100 + parseFloat(nObj['Innovation Ranking'])*sCW.innovRanking/100));
-    // mainData[key].Score = categoryWeights.environment*(parseFloat(nObj['# of Unicorn'])*sCW.nOfUnicorns/100 + parseFloat(nObj['Innovation Ranking'])*sCW.innovRanking/100);
     mainData[key].Score += categoryWeights.environment*(parseFloat(nObj['VC deal $ amount'])*sCW.vcDealAmt/100 + parseFloat(nObj['Number of FinTech Startups'])*sCW.noOfFinTechStartups/100);
     mainData[key].Score += categoryWeights.environment*(parseFloat(nObj['Internet Access'])*sCW.intAccess/100 + parseFloat(nObj['Wifi (% of time spent connected to wifi networks)'])*sCW.wifiPercent/100);
     mainData[key].Score += categoryWeights.social*(parseFloat(nObj["Tech Jobs Growth Rate % (06'-16')"])*sCW.techJobGrowth/100 + parseFloat(nObj['Most Liveable Cities'])*sCW.livableCities/100);
-    // mainData[key].Score += categoryWeights.social*(parseFloat(nObj["Tech Jobs Growth Rate % (06'-16')"]) *1);
-    // mainData[key].Score += categoryWeights.political*(parseFloat(nObj['Effective State Corporate Tax Rate 2017']) *1);
     mainData[key].Score += categoryWeights.political*(parseFloat(nObj["Effective State Corporate Tax Rate 2017"])*sCW.taxRate/100 + parseFloat(nObj['Tax Incentives'])*sCW.taxIncentives/100);
     mainData[key].Score += categoryWeights.economic*(parseFloat(nObj["Fintech Job Count"])*sCW.finTechJobCount/100 + parseFloat(nObj['GFCI'])*sCW.gfci/100);
     mainData[key].Score = (mainData[key].Score/100).toFixed(2);
