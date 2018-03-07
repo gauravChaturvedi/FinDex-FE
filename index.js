@@ -5,11 +5,6 @@ var categoryWeights = {
   'economic': 25
 };
 
-// Env 40
-// Social 30
-// Political 10
-// Eco 20
-
 var sCW = {
   'vcDealAmt': 20,
   'innovRanking': 15,
@@ -83,65 +78,24 @@ function getData() {
 
 getData();
 
+var filterNumbers = ['first', 'second', 'fourth', 'third'];
 
-var firstCategoryCheckBox = $('#firstCategoryCheckBox');
-var firstCategoryContainer = $('#first-category-container');
-firstCategoryContainer.hide();
+filterNumbers.forEach(function( v,i ) {
+  console.log(v);
+  var checkBox = $('#' + v + 'CategoryCheckBox');
+  var container = $('#' + v + '-category-container');
+  container.hide();
 
-firstCategoryCheckBox.on('click', function() {
-  if($(this).is(':checked')) {
-    firstCategoryContainer.show();
-  } else {
-    firstCategoryContainer.hide();
-  }
-});
-
-var secondCategoryCheckBox = $('#secondCategoryCheckBox');
-var secondCategoryContainer = $('#second-category-container');
-secondCategoryContainer.hide();
-
-secondCategoryCheckBox.on('click', function() {
-  if($(this).is(':checked')) {
-    secondCategoryContainer.show();
-  } else {
-    secondCategoryContainer.hide();
-  }
-});
-
-var thirdCategoryCheckBox = $('#thirdCategoryCheckBox');
-var thirdCategoryContainer = $('#third-category-container');
-thirdCategoryContainer.hide();
-
-thirdCategoryCheckBox.on('click', function() {
-  if($(this).is(':checked')) {
-    thirdCategoryContainer.show();
-  } else {
-    thirdCategoryContainer.hide();
-  }
-});
-
-var fourthCategoryCheckBox = $('#fourthCategoryCheckBox');
-var fourthCategoryContainer = $('#fourth-category-container');
-fourthCategoryContainer.hide();
-
-fourthCategoryCheckBox.on('click', function() {
-  if($(this).is(':checked')) {
-    fourthCategoryContainer.show();
-  } else {
-    fourthCategoryContainer.hide();
-  }
+  checkBox.on('click', function() {
+    if($(this).is(':checked')) {
+      container.show();
+    } else {
+      container.hide();
+    }
+  });
 });
 
 function calculateRankings() {
-  // console.log('Calculating Rankings with these weights', categoryWeights, sCW);
-  // Env 40
-  // Social 30
-  // Political 10
-  // Eco 20
-
-  // const cObject = Object.assign({}, mainData);
-
-
   for (var key in mainData) {
     const nObj = mainData[key];
     mainData[key].Score = categoryWeights.environment*(parseFloat(nObj['# of Unicorn'])*sCW.nOfUnicorns/100 + parseFloat(nObj['Innovation Ranking'])*sCW.innovRanking/100);
