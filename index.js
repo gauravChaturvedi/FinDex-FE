@@ -186,6 +186,9 @@ function restoreToDefaultWeights() {
 function updateUIWeights() {
   for (var key in categoryWeights) {
     $('#' + key)[0].value  = categoryWeights[key];
+    if (!$('input[name=' + key + ']').is(':checked')) {
+        $('input[name=' + key + ']').trigger('click');
+    }
   }
 
   for (var key in sCW) {
