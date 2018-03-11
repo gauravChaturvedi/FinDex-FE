@@ -70,9 +70,7 @@ function getData() {
   // $.get("https://findexdata.herokuapp.com/getData", function(data, status){
   $.get("https://nodeupload-196719.appspot.com/getData", function(data, status){
     mainData = JSON.parse(data);
-    for (var key in mainData) {
-      $("#rankingsTable > tbody").append("<tr><th>" + mainData[key].Ranking + "</th><td>" + mainData[key].Metropolitan + "</td><td>" + (mainData[key].Score).toFixed(2) + "</td>");
-    }
+    generateTable();
   });
 }
 
@@ -80,20 +78,35 @@ getData();
 
 var filterNumbers = ['first', 'second', 'fourth', 'third'];
 
+var categoryNames = {
+  'first': 'environment',
+  'second': 'social',
+  'third': 'political',
+  'fourth': 'economic'
+}
+
+// Show/Hide for subcategories based on category checks
 filterNumbers.forEach(function( v,i ) {
-  console.log(v);
   var checkBox = $('#' + v + 'CategoryCheckBox');
   var container = $('#' + v + '-category-container');
-  container.hide();
 
   checkBox.on('click', function() {
     if($(this).is(':checked')) {
       container.show();
     } else {
+      // Call function to make category 0 and remove the calculation
+      setCategoryToZero(categoryNames[v]);
       container.hide();
     }
   });
 });
+
+function setCategoryToZero(category) {
+  categoryWeights[category] = 0;
+  // update UI element
+  $('#' + category)[0].value = 0;
+
+}
 
 function calculateRankings() {
   for (var key in mainData) {
