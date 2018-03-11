@@ -27,6 +27,8 @@ var sCW = {
   'gfci': 30
 };
 
+var defaultCW = Object.assign({}, categoryWeights);
+var defaultSCW = Object.assign({}, sCW);
 
 // Updating UI with default values
 for (var key in categoryWeights) {
@@ -172,4 +174,21 @@ function generateTable() {
 
 function filterSlideToggle() {
   $('#weightsBar').toggle('slide', { direction: 'left' }, 500);
+}
+
+function restoreToDefaultWeights() {
+
+  categoryWeights = Object.assign({}, defaultCW);
+  sCW = Object.assign({}, defaultSCW);
+  updateUIWeights();
+}
+
+function updateUIWeights() {
+  for (var key in categoryWeights) {
+    $('#' + key)[0].value  = categoryWeights[key];
+  }
+
+  for (var key in sCW) {
+    $('#' + key)[0].value  = sCW[key];
+  }
 }
