@@ -86,11 +86,15 @@ filterNumbers.forEach(function( v,i ) {
 
   checkBox.on('click', function() {
     if($(this).is(':checked')) {
-      container.show();
+      container.slideDown( "slow", function() {
+      });
+      // container.show();
     } else {
       // Call function to make category 0 and remove the calculation
       setCategoryToZero(categoryNames[v]);
-      container.hide();
+      container.slideUp( "slow", function() {
+      });
+      // container.hide();
     }
   });
 });
@@ -110,17 +114,17 @@ function calculateRankings() {
   // Check for sum of category weights and the subcategories of each category
   for (var key in categoryWeights) {
     if (categoryWeights.hasOwnProperty(key)) {
-        categorySum += categoryWeights[key];
-        if (categoryWeights[key] !== 0) {
-          var subCategorySum = 0;
-          // Find sum of all the subCategories for this category
-          subCategoryGroups[key].forEach(function(subCategory,i ) {
-            subCategorySum += sCW[subCategory];
-          });
-          if (subCategorySum > 100 || subCategorySum < 100) {
-            subCategorySumError.push(key)
-          }
+      categorySum += categoryWeights[key];
+      if (categoryWeights[key] !== 0) {
+        var subCategorySum = 0;
+        // Find sum of all the subCategories for this category
+        subCategoryGroups[key].forEach(function(subCategory,i ) {
+          subCategorySum += sCW[subCategory];
+        });
+        if (subCategorySum > 100 || subCategorySum < 100) {
+          subCategorySumError.push(key)
         }
+      }
     }
   }
 
