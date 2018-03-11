@@ -29,9 +29,34 @@
       </div>
     </div>
   </nav>
-  <div style="display: flex;">
-    <div class="navbar navbar-default" id="weightsBar" style="flex: 0.75;">
+  <!-- Modal -->
+  <div class="modal fade" id="categoryErrorModal" role="dialog">
+    <div class="modal-dialog">
 
+      <!-- Category Eror Modal content-->
+      <div class="modal-content">
+        <div id="categoryErrorMessage" class="alert alert-danger">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <strong>Error!</strong> Sum of category weights is not 100
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="subCategoryErrorModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- SubCategory Error Modal content-->
+      <div class="modal-content">
+        <div id="subCategoryErrorMessage" class="alert alert-danger">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <strong>Error!</strong> Sum of subcategory weights is not 100 <span id="subCategoryErrorPlaceholder"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex;">
+    <div class="navbar navbar-default" id="weightsBar">
       <!-- ENVIRONMENT -->
       <div class="all-categories-container">
         <div class="category-container">

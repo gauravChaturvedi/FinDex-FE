@@ -1,3 +1,8 @@
+#weightsBar {
+  flex: 1;
+  overflow: scroll;
+}
+
 .all-categories-container {
   padding: 10%;
 }
@@ -48,6 +53,14 @@
 .calculate-button-container {
   justify-content: center;
   display: flex;
+}
+
+#categoryErrorMessage {
+  margin: 0;
+}
+
+#subCategoryErrorMessage {
+  margin: 0;
 }
 
 #tableContainer {
