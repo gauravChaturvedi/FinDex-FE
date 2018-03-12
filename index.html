@@ -136,17 +136,48 @@
               <input type="text" id="intAccess" pattern="[0-100]" onchange="subCategoryWeightUpdated('intAccess', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2"><span class="percentage-label">%</span>
             </div>
           </div>
-          <div class="subcategory-container">
+          <!-- <div class="subcategory-container">
             <div class="category-checkbox">
               <label>Wifi (% of time spent connected to wifi networks)</label>
             </div>
             <div class="category-weight">
               <input type="text" id="wifiPercent" pattern="[0-100]" onchange="subCategoryWeightUpdated('wifiPercent', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2"><span class="percentage-label">%</span>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
       <!-- ENVIRONMENT END-->
+
+      <!-- ECONOMIC -->
+      <div class="all-categories-container">
+        <div class="category-container">
+          <div class="category-checkbox">
+            <input type="checkbox" checked name="economic" id="fourthCategoryCheckBox" aria-label="..."> <label>Economic</label>
+          </div>
+          <div class="category-weight">
+            <input type="text" id="economic" pattern="[0-100]" onchange="categoryWeightUpdated('economic', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2"><span class="percentage-label">%</span>
+          </div>
+        </div>
+        <div id="fourth-category-container" class="sub-categories-container">
+          <div class="subcategory-container">
+            <div class="category-checkbox">
+              <label>Fintech Job Count</label>
+            </div>
+            <div class="category-weight">
+              <input type="text" id="finTechJobCount" pattern="[0-100]" onchange="subCategoryWeightUpdated('finTechJobCount', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2"><span class="percentage-label">%</span>
+            </div>
+          </div>
+          <div class="subcategory-container">
+            <div class="category-checkbox">
+              <label>GFCI</label>
+            </div>
+            <div class="category-weight">
+              <input type="text" id="gfci" pattern="[0-100]" onchange="subCategoryWeightUpdated('gfci', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2"><span class="percentage-label">%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ECONOMIC END-->
 
       <!-- SOCIAL -->
       <div class="all-categories-container">
@@ -209,37 +240,6 @@
         </div>
       </div>
       <!-- POLITICAL END-->
-
-      <!-- ECONOMIC -->
-      <div class="all-categories-container">
-        <div class="category-container">
-          <div class="category-checkbox">
-            <input type="checkbox" checked name="economic" id="fourthCategoryCheckBox" aria-label="..."> <label>Economic</label>
-          </div>
-          <div class="category-weight">
-            <input type="text" id="economic" pattern="[0-100]" onchange="categoryWeightUpdated('economic', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2"><span class="percentage-label">%</span>
-          </div>
-        </div>
-        <div id="fourth-category-container" class="sub-categories-container">
-          <div class="subcategory-container">
-            <div class="category-checkbox">
-              <label>Fintech Job Count</label>
-            </div>
-            <div class="category-weight">
-              <input type="text" id="finTechJobCount" pattern="[0-100]" onchange="subCategoryWeightUpdated('finTechJobCount', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2"><span class="percentage-label">%</span>
-            </div>
-          </div>
-          <div class="subcategory-container">
-            <div class="category-checkbox">
-              <label>GFCI</label>
-            </div>
-            <div class="category-weight">
-              <input type="text" id="gfci" pattern="[0-100]" onchange="subCategoryWeightUpdated('gfci', this);" class="form-control" placeholder="0" aria-describedby="sizing-addon2"><span class="percentage-label">%</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- ECONOMIC END-->
 
       <!-- CALCULATE & RESET BUTTONS-->
       <div class="button-container">

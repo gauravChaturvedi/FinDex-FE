@@ -13,12 +13,11 @@ var subCategoryGroups = {
 };
 
 var sCW = {
-  'vcDealAmt': 20,
+  'vcDealAmt': 25,
   'innovRanking': 15,
-  'nOfUnicorns': 20,
-  'noOfFinTechStartups': 20,
-  'intAccess': 12.5,
-  'wifiPercent': 12.5,
+  'nOfUnicorns': 25,
+  'noOfFinTechStartups': 25,
+  'intAccess': 10,
   'techJobGrowth': 70,
   'livableCities': 30,
   'taxRate': 40,
