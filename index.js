@@ -42,6 +42,7 @@ for (var key in sCW) {
 
 
 var mainData = {};
+var percentileData = {};
 
 const windowHeight = $( window ).height();
 const headerHeight = $('#headerBar').height()
@@ -57,20 +58,32 @@ function categoryWeightUpdated(id, elem) {
 
 function subCategoryWeightUpdated(id, elem) {
   const newValue = elem.value;
-  // const comparisonObject = Object.assign({}, sCW);
-  // comparisonObject[id] = newValue;
   sCW[id] = (parseFloat(newValue) || 0);
 }
 
 function getData() {
-  // $.get("https://findexdata.herokuapp.com/getData", function(data, status){
-  $.get("https://nodeupload-196719.appspot.com/getData", function(data, status){
+  // $.get("https://nodeupload-196719.appspot.com/getData", function(data, status){
+  $.get("http://findex-data-findex-data.193b.starter-ca-central-1.openshiftapps.com/getData", function(data, status){
     mainData = JSON.parse(data);
     generateTable();
-  });
+  }).fail(function() {
+    console.log('Unable to get main data');
+});;
+}
+
+function getPercentileData() {
+  // $.get("https://nodeupload-196719.appspot.com/getPercentileData", function(data, status){
+  // $.get("https://findex-data.appspot.com/getPercentileData", function(data, status){
+    $.get("http://findex-data-findex-data.193b.starter-ca-central-1.openshiftapps.com/getPercentileData", function(data, status){
+    percentileData = JSON.parse(data);
+    console.log(percentileData);
+  }).fail(function() {
+    console.log('Unable to get percentile data');
+});;
 }
 
 getData();
+getPercentileData();
 
 var filterNumbers = ['first', 'second', 'fourth', 'third'];
 
@@ -168,8 +181,41 @@ function generateTable() {
   $("#rankingsTable > tbody").empty();
 
   for (var key in mainData) {
-    $("#rankingsTable > tbody").append("<tr><th>" + (parseInt(key) +1) + "</th><td>" + mainData[key].Metropolitan + "</td><td>" + mainData[key].Score + "</td>");
+    $("#rankingsTable > tbody").append("<tr onClick='generateCityDetails(" + key +")'" + "><th>" + (parseInt(key) +1) + "</th><td>" + mainData[key].Metropolitan + "</td><td>" + mainData[key].Score.toFixed(2) + "</td>");
   }
+}
+
+function generatePercentileTable(cityIndex) {
+  $("#percentile-table > tbody").empty();
+  $('#city-details-modal-title').text(percentileData[cityIndex]['Metropolitan']);
+  $('#city-details-modal-title').append("<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>");
+  // SORTING THE KEYS
+  // convert object into array
+	var sortable=[];
+	for(var key in percentileData[cityIndex])
+		if(percentileData[cityIndex].hasOwnProperty(key))
+			sortable.push([key, percentileData[cityIndex][key]]); // each item is an array in format [key, value]
+
+	// sort items by value
+	sortable.sort(function(a, b)
+	{
+	  return a[1]-b[1]; // compare numbers
+	});
+
+  sortable.forEach(function (v,i) {
+    var className = '';
+    if (v[0] !== 'Metropolitan') {
+      var percentileValue = (parseFloat(v[1])*100).toFixed(2);
+      if (percentileValue <33) {
+        className = 'alert-danger';
+      } else if(percentileValue > 33 && percentileValue <67) {
+        className = 'alert-warning';
+      } else {
+        className = 'alert-success';
+      }
+      $("#percentile-table > tbody").append("<tr class=" + className + "><th>" + (v[0]) + "</th><td>" + percentileValue + "</td>");
+    }
+  });
 }
 
 function filterSlideToggle() {
@@ -177,7 +223,6 @@ function filterSlideToggle() {
 }
 
 function restoreToDefaultWeights() {
-
   categoryWeights = Object.assign({}, defaultCW);
   sCW = Object.assign({}, defaultSCW);
   updateUIWeights();
@@ -194,4 +239,9 @@ function updateUIWeights() {
   for (var key in sCW) {
     $('#' + key)[0].value  = sCW[key];
   }
+}
+
+function generateCityDetails(cityIndex) {
+  generatePercentileTable(cityIndex);
+  $('#city-details-modal').modal('show');
 }
