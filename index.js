@@ -62,8 +62,8 @@ function subCategoryWeightUpdated(id, elem) {
 
 function getData() {
   // $.get("https://nodeupload-196719.appspot.com/getData", function(data, status){
-  // $.get("https://findex-data-findex-data.193b.starter-ca-central-1.openshiftapps.com/getData", function(data, status){
-  $.get("https://findexdata.herokuapp.com/getData", function(data, status){
+  $.get("https://findex-data-findex-data.193b.starter-ca-central-1.openshiftapps.com/getData", function(data, status){
+  // $.get("https://findexdata.herokuapp.com/getData", function(data, status){
     mainData = JSON.parse(data);
     generateTable();
   }).fail(function() {
@@ -74,7 +74,8 @@ function getData() {
 function getPercentileData() {
   // $.get("https://nodeupload-196719.appspot.com/getPercentileData", function(data, status){
   // $.get("https://findex-data.appspot.com/getPercentileData", function(data, status){
-  $.get("https://findexdata.herokuapp.com/getPercentileData", function(data, status){
+  $.get("https://findex-data-findex-data.193b.starter-ca-central-1.openshiftapps.com/getPercentileData", function(data, status){
+  // $.get("https://findexdata.herokuapp.com/getPercentileData", function(data, status){
     // $.get("https://findex-data-findex-data.193b.starter-ca-central-1.openshiftapps.com/getPercentileData", function(data, status){
     percentileData = JSON.parse(data);
     console.log(percentileData);
