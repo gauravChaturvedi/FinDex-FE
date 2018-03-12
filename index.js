@@ -6,7 +6,7 @@ var categoryWeights = {
 };
 
 var subCategoryGroups = {
-  'environment': ['nOfUnicorns', 'innovRanking', 'vcDealAmt', 'noOfFinTechStartups', 'wifiPercent', 'intAccess'],
+  'environment': ['nOfUnicorns', 'innovRanking', 'vcDealAmt', 'noOfFinTechStartups', 'intAccess'],
   'social': ['techJobGrowth', 'livableCities'],
   'political': ['taxRate', 'taxIncentives'],
   'economic': ['finTechJobCount', 'gfci']
@@ -164,7 +164,7 @@ function calculateRankings() {
       const nObj = mainData[key];
       mainData[key].Score = categoryWeights.environment*(parseFloat(nObj['# of Unicorn'])*sCW.nOfUnicorns/100 + parseFloat(nObj['Innovation Ranking'])*sCW.innovRanking/100);
       mainData[key].Score += categoryWeights.environment*(parseFloat(nObj['VC deal $ amount'])*sCW.vcDealAmt/100 + parseFloat(nObj['Number of FinTech Startups'])*sCW.noOfFinTechStartups/100);
-      mainData[key].Score += categoryWeights.environment*(parseFloat(nObj['Internet Access'])*sCW.intAccess/100 + parseFloat(nObj['Wifi (% of time spent connected to wifi networks)'])*sCW.wifiPercent/100);
+      mainData[key].Score += categoryWeights.environment*(parseFloat(nObj['Internet Access'])*sCW.intAccess/100);
       mainData[key].Score += categoryWeights.social*(parseFloat(nObj["Tech Jobs Growth Rate % (06'-16')"])*sCW.techJobGrowth/100 + parseFloat(nObj['Most Liveable Cities'])*sCW.livableCities/100);
       mainData[key].Score += categoryWeights.political*(parseFloat(nObj["Effective State Corporate Tax Rate 2017"])*sCW.taxRate/100 + parseFloat(nObj['Tax Incentives'])*sCW.taxIncentives/100);
       mainData[key].Score += categoryWeights.economic*(parseFloat(nObj["Fintech Job Count"])*sCW.finTechJobCount/100 + parseFloat(nObj['GFCI'])*sCW.gfci/100);
