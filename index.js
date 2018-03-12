@@ -180,9 +180,8 @@ function calculateRankings() {
 
 function generateTable() {
   $("#rankingsTable > tbody").empty();
-
   for (var key in mainData) {
-    $("#rankingsTable > tbody").append("<tr onClick='generateCityDetails(" + key +")'" + "><th>" + (parseInt(key) +1) + "</th><td>" + mainData[key].Metropolitan + "</td><td>" + mainData[key].Score.toFixed(2) + "</td>");
+    $("#rankingsTable > tbody").append("<tr onClick='generateCityDetails(" + key +")'" + "><th>" + (parseInt(key) +1) + "</th><td>" + mainData[key].Metropolitan + "</td><td>" + parseFloat(mainData[key].Score).toFixed(2) + "</td>");
   }
 }
 
