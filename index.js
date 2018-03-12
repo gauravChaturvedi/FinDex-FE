@@ -62,8 +62,8 @@ function subCategoryWeightUpdated(id, elem) {
 
 function getData() {
   // $.get("https://nodeupload-196719.appspot.com/getData", function(data, status){
-  $.get("https://findex-data-findex-data.193b.starter-ca-central-1.openshiftapps.com/getData", function(data, status){
   // $.get("https://findexdata.herokuapp.com/getData", function(data, status){
+  $.get("https://findex-data-findex-data.193b.starter-ca-central-1.openshiftapps.com/getData", function(data, status){
     mainData = JSON.parse(data);
     generateTable();
   }).fail(function() {
@@ -163,12 +163,12 @@ function calculateRankings() {
 
     for (var key in mainData) {
       const nObj = mainData[key];
-      mainData[key].Score = categoryWeights.environment*(parseFloat(nObj['# of Unicorn'])*sCW.nOfUnicorns/100 + parseFloat(nObj['Innovation Ranking'])*sCW.innovRanking/100);
-      mainData[key].Score += categoryWeights.environment*(parseFloat(nObj['VC deal $ amount'])*sCW.vcDealAmt/100 + parseFloat(nObj['Number of FinTech Startups'])*sCW.noOfFinTechStartups/100);
-      mainData[key].Score += categoryWeights.environment*(parseFloat(nObj['Internet Access'])*sCW.intAccess/100);
-      mainData[key].Score += categoryWeights.social*(parseFloat(nObj["Tech Jobs Growth Rate % (06'-16')"])*sCW.techJobGrowth/100 + parseFloat(nObj['Most Liveable Cities'])*sCW.livableCities/100);
-      mainData[key].Score += categoryWeights.political*(parseFloat(nObj["Effective State Corporate Tax Rate 2017"])*sCW.taxRate/100 + parseFloat(nObj['Tax Incentives'])*sCW.taxIncentives/100);
-      mainData[key].Score += categoryWeights.economic*(parseFloat(nObj["Fintech Job Count"])*sCW.finTechJobCount/100 + parseFloat(nObj['GFCI'])*sCW.gfci/100);
+      mainData[key].Score = categoryWeights.environment*(parseFloat(nObj['Unicorns (#)'])*sCW.nOfUnicorns/100 + parseFloat(nObj['Innovation '])*sCW.innovRanking/100);
+      mainData[key].Score += categoryWeights.environment*(parseFloat(nObj['VC Funding ($)'])*sCW.vcDealAmt/100 + parseFloat(nObj['Number of FinTech Startups'])*sCW.noOfFinTechStartups/100);
+      mainData[key].Score += categoryWeights.environment*(parseFloat(nObj['Household Internet Access (%)'])*sCW.intAccess/100);
+      mainData[key].Score += categoryWeights.social*(parseFloat(nObj["Tech Jobs Growth Rate (Historical)"])*sCW.techJobGrowth/100 + parseFloat(nObj['Livability'])*sCW.livableCities/100);
+      mainData[key].Score += categoryWeights.political*(parseFloat(nObj["Corporate Tax Rate"])*sCW.taxRate/100 + parseFloat(nObj['Digital Currency Regulation'])*sCW.taxIncentives/100);
+      mainData[key].Score += categoryWeights.economic*(parseFloat(nObj["New FinTech Jobs (Projected #)"])*sCW.finTechJobCount/100 + parseFloat(nObj['Global Financial Center (Y/N)'])*sCW.gfci/100);
       mainData[key].Score = (mainData[key].Score/100).toFixed(2);
     }
     mainData.sort(function(a, b){
