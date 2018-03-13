@@ -78,7 +78,6 @@ function getPercentileData() {
   // $.get("https://findexdata.herokuapp.com/getPercentileData", function(data, status){
     // $.get("https://findex-data-findex-data.193b.starter-ca-central-1.openshiftapps.com/getPercentileData", function(data, status){
     percentileData = JSON.parse(data);
-    console.log(percentileData);
   }).fail(function() {
     console.log('Unable to get percentile data');
 });;
@@ -182,20 +181,44 @@ function calculateRankings() {
 function generateTable() {
   $("#rankingsTable > tbody").empty();
   for (var key in mainData) {
-    $("#rankingsTable > tbody").append("<tr onClick='generateCityDetails(" + key +")'" + "><th>" + (parseInt(key) +1) + "</th><td>" + mainData[key].Metropolitan + "</td><td>" + parseFloat(mainData[key].Score).toFixed(2) + "</td>");
+
+    var tr = document.createElement("tr");
+    var th = document.createElement("th");
+    th.appendChild(document.createTextNode(parseInt(key) +1))
+    tr.appendChild(th);
+    var td = document.createElement("td");
+    td.appendChild(document.createTextNode(mainData[key].Metropolitan))
+    tr.appendChild(td);
+    var td1 = document.createElement("td");
+    td1.appendChild(document.createTextNode(parseFloat(mainData[key].Score).toFixed(2)))
+    tr.appendChild(td1);
+    var cityName = mainData[key].Metropolitan;
+    tr.onclick = function () {
+      generateCityDetails($(this).find('td:eq(0)').text());
+    };
+    delete cityName;
+    $("#rankingsTable > tbody").append(tr);
+
+    // $("#rankingsTable > tbody").append("<tr onClick='generateCityDetails(" + mainData[key].Metropolitan + ")'" + "><th>" + (parseInt(key) +1) + "</th><td>" + mainData[key].Metropolitan + "</td><td>" + parseFloat(mainData[key].Score).toFixed(2) + "</td>");
   }
 }
 
-function generatePercentileTable(cityIndex) {
+function generatePercentileTable(cityName) {
   $("#percentile-table > tbody").empty();
-  $('#city-details-modal-title').text(percentileData[cityIndex]['Metropolitan']);
+  $('#city-details-modal-title').text(cityName);
   $('#city-details-modal-title').append("<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>");
   // SORTING THE KEYS
   // convert object into array
+
+  var selectedCity = percentileData.filter(function(v, i) {
+    return v.Metropolitan === cityName;
+  })[0];
+
 	var sortable=[];
-	for(var key in percentileData[cityIndex])
-		if(percentileData[cityIndex].hasOwnProperty(key))
-			sortable.push([key, percentileData[cityIndex][key]]); // each item is an array in format [key, value]
+	for(var key in selectedCity) {
+    if(selectedCity.hasOwnProperty(key))
+      sortable.push([key, selectedCity[key]]); // each item is an array in format [key, value]
+  }
 
 	// sort items by value
 	sortable.sort(function(a, b)
@@ -205,7 +228,7 @@ function generatePercentileTable(cityIndex) {
 
   sortable.forEach(function (v,i) {
     var className = '';
-    if (v[0] !== 'Metropolitan') {
+    if (v[0] !== 'Metropolitan' && v[0] !== '') {
       var percentileValue = (parseFloat(v[1])*100).toFixed(2);
       if (percentileValue <33) {
         className = 'alert-danger';
@@ -242,7 +265,7 @@ function updateUIWeights() {
   }
 }
 
-function generateCityDetails(cityIndex) {
-  generatePercentileTable(cityIndex);
+function generateCityDetails(cityName) {
+  generatePercentileTable(cityName);
   $('#city-details-modal').modal('show');
 }
