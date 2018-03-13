@@ -13,11 +13,11 @@ var subCategoryGroups = {
 };
 
 var sCW = {
-  'vcDealAmt': 25,
+  'vcDealAmt': 20,
   'innovRanking': 15,
-  'nOfUnicorns': 25,
-  'noOfFinTechStartups': 25,
-  'intAccess': 10,
+  'nOfUnicorns': 20,
+  'noOfFinTechStartups': 20,
+  'intAccess': 25,
   'techJobGrowth': 70,
   'livableCities': 30,
   'taxRate': 40,
@@ -67,6 +67,7 @@ function getData() {
     mainData = JSON.parse(data);
     generateTable();
   }).fail(function() {
+    // $('#apiErrorModal').modal('show');
     console.log('Unable to get main data');
 });;
 }
@@ -79,6 +80,7 @@ function getPercentileData() {
     // $.get("https://findex-data-findex-data.193b.starter-ca-central-1.openshiftapps.com/getPercentileData", function(data, status){
     percentileData = JSON.parse(data);
   }).fail(function() {
+    // $('#apiErrorModal').modal('show');
     console.log('Unable to get percentile data');
 });;
 }
